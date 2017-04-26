@@ -1,0 +1,52 @@
+body {
+	padding: 5em;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3 {
+	color: #4d0000;
+}
+
+
+.brooding {
+	font-size: .75em;
+	font-weight: bold;
+	font-family: "Gill Sans Extrabold, sans-serif";
+	text-transform: uppercase;
+	line-height: .75em;
+	text-align: justify;
+	color:  #cc0000;
+}
+
+.clean {
+	font-family: "Lucida Console", Courier, monospace;
+	font-weight: lighter;
+	line-height: 1.5em;
+	color: #ff4d4d;
+	text-align: justify;
+}
+
+.romantic {
+	font-family: 'Pacifico', cursive;
+	font-size: 1.5em;
+	line-height: 2em;
+	font-weight: .5em;
+	color: #ffe6e6;
+	text-align: justify;
+}
+
+#zeroith {
+	color: #800000
+}
+
+#first {
+	color: #990000;
+}
+
+#second {
+	color: #e60000;
+}
+
+#third {
+	color: #ffb3b3;
+}

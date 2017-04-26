@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+
+
+</body>
+<script type="text/javascript">
+	$('#add-employee').on('click', function(){
+
+		event.preventDefault();
+
+var employee = $("#employee-input").val().trim();
+var role = $("#role-input").val().trim();
+var start = $("#start-input").val().trim();
+var rate = $("#rate-input").val().trim();
+var monthsWorked;
+var totalBilled = parseInt(monthsWorked) * parseInt(rate);
+
+var newRow = $('<tr>');
+
+var newEmployee = $('<td>');
+newEmployee.append(employee);
+console.log('newEmployee');
+newRow.append(newEmployee);
+var newRole = $('<td>');
+newRole.append(role);
+newRow.append(newRole);
+var newStart = $('<td>');
+newStart.append(start);
+newRow.append(newStart);
+var newRole = $('<td>');
+newRate.append(rate);
+newRow.append(newRate);
+
+console.log(newRow);
+$('#employee-table').append(newRow);
+
+</script>
+</html>

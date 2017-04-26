@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Click Button with Firebase!</title>
+
+    <!-- link firebase CDN-->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Create span element on DOM to show updated click value-->
+    <h1>Ouch! You've clicked me <span id="click-value"></span> times!</h1>
+
+    <!--Create button elem on DOM on which to call data update function -->
+    <button id="click-button">Click Me!!!!</button>
+
+    <!-- Connect jQuery CDN-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Store app specific config vars -->
+    <script>
+
+
+
+    var config = {
+    apiKey: "AIzaSyDwDK00R7tZdVOTgLTNTYOnwFqBtifyhg8",
+    authDomain: "gwcb-first-app.firebaseapp.com",
+    databaseURL: "https://gwcb-first-app.firebaseio.com",
+    storageBucket: "gwcb-first-app.appspot.com",
+    messagingSenderId: "661284158379"
+  };
+
+    firebase.initializeApp(config);
+
+    // VARIABLES
+    // store reference to database on firebase object
+    // store value of click count
+
+    var database = firebase.database();
+    var clickCounter = 0;
+
+    // FUNCTIONS + EVENTS
+    // create event handler on button to update click val and set updated val on firebase obj
+
+    $("#click-button").on("click", function() {
+      clickCounter++;
+      database.ref().set({
+        clickCount: clickCounter
+      });
+    });
+
+    // MAIN PROCESS + INITIAL CODE
+    // bind data value change (data changed by any user/part of app) event to callback which takes the changed val as a param, updates changed val locally in storage and dom.
+    //error fallback
+
+    database.ref().on("value", function(snapshot) {
+      clickCounter = snapshot.val().clickCount;
+      console.log(snapshot.val());
+      $("#click-value").html(snapshot.val().clickCount);
+
+    }, function(errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,85 @@
+/**
+ * Float Layout Activity
+ **/
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+body {
+
+}
+
+header {
+
+	padding: 20px;
+	margin-bottom: 20px;
+	color: #333;
+  background: #ccc;
+}
+
+section {
+	padding: 20px;
+	margin-bottom: 20px;
+
+}
+
+#left {
+	background-color: #666;
+}
+
+#middle {
+	background-color: #888;
+
+}
+
+#right {
+	background-color: #666;
+
+}
+
+.white {
+	color: #fff;
+	width: 33.3%;
+	/*display: inline-block;*/
+	float: left;
+	padding: 20px;
+}
+
+#full {
+	clear: both;
+	overflow: auto;
+	background-color: #eee;
+	width: 100%;
+
+}
+
+
+#division {
+	background-color: #6ea3da;
+	padding: 20px;
+
+}
+
+
+aside {
+	width: 33%;
+	height: 200px;
+	padding: 20px;
+	background-color: #fff;
+	margin-left: 20px;
+	float: left;
+
+}
+
+
+footer {
+	clear: both;
+	background-color: #ccc;
+	padding: 20px;
+
+
+}
+
+/*unclear about how to select WHICH element to float*/

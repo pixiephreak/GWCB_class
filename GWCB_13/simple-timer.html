@@ -1,0 +1,94 @@
+<!-- Simple Timer -->
+
+<!--
+Make a page with a a simple timer that sends an alert and plays a sound after 15 seconds.
+Have it send an alert when 5 seconds has passed, 10 seconds has passed and when the time is up.
+You will use this to time the break! -->
+<!-- Students: Your work lies in the last script tag -->
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Simple Timer</title>
+
+  </head>
+
+  <body>
+
+    <div id="time-left"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
+    <!-- Script -->
+    <script>
+
+      // Step 1:
+      // Use the following link inside the Audio function below:
+      // https://p.scdn.co/mp3-preview/ed5a443bc86176135ebca8a114f66f4d814d4c90
+      var audio = new Audio("https://p.scdn.co/mp3-preview/ed5a443bc86176135ebca8a114f66f4d814d4c90");
+
+      //  Step 2: do the following between the --- comments
+      //  after 5 seconds, execute the fiveSeconds function
+
+      // setTimeout(function(){
+      //   fiveSeconds()
+      // },5000)
+      setTimeout(fiveSeconds, 5000);
+      //  after 10 seconds, execute the tenSeconds function
+      setTimeout(function(){
+        tenSeconds()
+      }, 10000)
+      //  after 15 seconds, execute the timeUp function
+      setTimeout(function(){
+        timeUp()
+      },15000)
+      // ---------------------
+        //CODE STEP TWO HERE
+      // ---------------------
+
+
+      // Step 3:
+      // Fill in the blanks to these functions.
+      function fiveSeconds() {
+
+        // in the element with an id of time-left add an h2 saying About 10 Seconds Left!
+        $('#time-left').append(`<h2> About Ten Seconds Left </h2>`)
+        // console log 10 seconds left
+        console.log('ten seconds left')
+
+      }
+
+
+      function tenSeconds() {
+
+        // in the element with an id of time-left add an h2 saying About 5 Seconds Left!
+        $('#time-left').append(`<h2> About 5 Seconds Left </h2>`)
+        // console log 5 seconds left
+        console.log('ten seconds left')
+
+      }
+
+
+      function timeUp() {
+
+        // in the element with an id of time-left add an h2 saying Time's Up!
+        $('#time-left').append(`<h2> Time's Up </h2>`)
+        // console log done
+        console.log('done');
+
+        // The following line will play the audio file we linked to above.
+        audio.play();
+
+      }
+
+    </script>
+
+  </body>
+
+</html>
+

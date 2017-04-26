@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Trigger Clicked</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+</head>
+
+<body>
+
+  <h1>Click to Eat Sandwich</h1>
+  <h3 id="pbj"">Peanut Butter Jelly</h3>
+  <h3 id="grillcheese">Grilled Cheese</h3>
+  <h3 id="roastbeef">Roast Beef</h3>
+
+  <div id="sandwichesCount"></div>
+
+  <script type="text/javascript">
+
+    // This document.ready isn't necessary in this example... but is needed in cases where the HTML is complex.
+    // This code makes sure that the JavaScript doesn't get run until the HTML is finished loading
+    // It's useful to become familiar with now.
+
+    $(document).ready(function() {
+
+      // VARIABLES
+      // ====================================================================
+      // Here we create variables for tracking the number of sandwiches eaten
+      // ...
+      var count = 0;
+
+
+      // ...
+
+      // FUNCTIONS
+      // ====================================================================
+      // Here we create various on "click" functions which capture the clicks
+      // Inside each click event is the code to create an alert, update the counter, then show the updated count.
+      // ...
+
+      function sandwichAlert(sandwich){
+
+         sandwich.on("click", function() {
+         alert(`You ate ${sandwich}`);
+         count++
+         $('#sandwichesCount').html(`total sandwiches eaten: ${count}`);
+       })
+
+       }
+
+  $( "h1" ).click(function( event ) {
+  $( "#log" ).html( "clicked: " + event.target.nodeName );
+});
+
+
+
+
+     // $('#pbj').on("click", function() {
+     //    alert(`You ate pbj`);
+     //    count++
+     //    $('#sandwichesCount').html(`total sandwiches eaten: ${count}`);
+     //  })
+
+     //  $('#grillcheese').on("click", function() {
+     //    alert(`You ate grillcheese`);
+     //    count++
+     //    $('#sandwichesCount').html(`total sandwiches eaten: ${count}`);
+     //  })
+
+     //   $('#roastbeef').on("click", function() {
+     //    alert(`You ate roastbeef`);
+     //    count++
+     //    $('#sandwichesCount').html(`total sandwiches eaten: ${count}`);
+     //  })
+
+
+
+
+      // ...
+
+    });
+
+</script>
+
+</body>
+
+</html>

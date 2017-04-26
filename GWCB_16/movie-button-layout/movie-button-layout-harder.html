@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Favorite Movies</title>
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Movie Search</h1>
+
+    <!-- Movies will get dumped here -->
+    <div id="movies-view"></div>
+
+    <div id="movie-info">
+      <div id='title'></div>
+      <div id='plot'></div>
+      <div id='rated'></div>
+      <div id='release'></div>
+      <div id="poster"></div>
+    </div>
+
+
+    <form id="movie-form">
+      <label for="movie-input">Add a Movie</label>
+      <input type="text" id="movie-input"><br>
+
+      <!-- Button triggers new movie to be added -->
+      <input id="add-movie" type="submit" value="Add a Movie ">
+    </form>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript">
+      var thisMovie;
+      var queryURL;
+      var api;
+      // Initial array of movies
+      var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+
+      // Function for displaying movie data
+      function renderButtons() {
+        $('#movies-view').empty()
+        for(let i=0; i<movies.length; i++){
+          var newButton = `<button class = "movie-buttons">${movies[i]}</button>`;
+          // newButton.attr("data-name", movies[i]);
+          $('#movies-view').append(newButton);
+        }
+
+      }
+
+      //when page was refreshing, it wasn't attaching onclick event again, so attach event everytime a button renders
+      $(document).on('click', ".movie-buttons", function(){
+        console.log('click firing');
+        console.log($('.movie-buttons'));
+        //this is the movie-buttons div
+        // thisMovie = $(this).data('movie')
+        //using the data attribute only returns FIRST word of movie string (???)
+        thisMovie = $(this).html();
+        console.log(thisMovie);
+        getMovie();
+      })
+
+      // This function handles events where one button is clicked
+      $("#add-movie").on("click", function() {
+      event.preventDefault();
+      var movie = $("#movie-input").val().trim();
+      if (movie.length != 0){
+        movies.push(movie);
+      }
+      ;
+      renderButtons();
+      });
+
+      renderButtons();
+
+      // Calling the renderButtons function to display the initial list of movies
+
+      function getMovie(){
+        api = 'http://www.omdbapi.com/?'
+        queryURL = `${api}t=${thisMovie}`
+        $.ajax({
+          url: queryURL,
+          method: 'GET'
+        }).fail(function(){
+          alert("error");
+        }).done(function(response){
+         // $('#movie-info').html(JSON.stringify(response));
+         console.log(JSON.stringify(response));
+         $('#title').html(response.Title);
+         $('#rating').html(response.Rated);
+         $('#release').html(response.Release);
+         $('#plot').html(response.Plot);
+         $('#poster').attr('src', response.Poster);
+         $('#poster').empty();
+         $('#poster').append('<img id="poster" src="'+response.Poster+'" alt="movie poster"></img>')
+        });
+      }
+
+    </script>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+	<!-- keyup  recording input of r, p , or s // and store it in a var
+
+	randomize a value between 1-3 math.random()
+
+	check if value is in range of r(1)/p(2)/s(3) -->
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>RPS</title>
+	</head>
+	<body>
+		<h1>Please press R, P, or S to start</h1>
+		<h2>USER SCORE:</h2>
+		<!-- create div to store user score -->
+		<div id = "userScore">0</div>
+		<h2>COMPUTER SCORE:</h2>
+		<!-- create div to store computer's score -->
+		<div id = "compScore"<>0</div>
+
+	</body>
+	</html>
+
+	<script>
+	// retreive div elem and store div elements in variable
+		var userScore = document.getElementById("userScore");
+		var compScore = document.getElementById("compScore");
+	// initialize score counts
+		userTally = 0;
+		compTally = 0;
+
+
+	// listen for key press
+		document.onkeyup = function(event){
+			// assign computer's selection to random val between 1 and 3
+			var compSelection = random();
+			// map integer rock, paper, scisscors
+			var r = 1;
+			var s = 2;
+			var p = 3;
+			// store key presed by user
+			var userSelectionEvent = event.key;
+
+			// keep track of game in console
+			console.log("---new game---")
+			console.log("comp:"+compSelection);
+			console.log("user:"+userSelection);
+			console.log(userSelection(userSelectionEvent));
+			// winning scenarios augment user score
+			// possible winning scenarios augment computer score
+			// check for tie scenarios
+			// verify that valid key is pressed
+			if(userSelectionEvent.toLowerCase() === "r" && compSelection === s || userSelectionEvent.toLowerCase() === "s" && compSelection === p || userSelectionEvent.toLowerCase() === "p" && compSelection === r){
+				userScore.innerHTML = userTally+= 1;
+			}else if(compSelection === r && userSelectionEvent.toLowerCase() === "s" || compSelection === p && userSelectionEvent.toLowerCase() === "r" || compSelection === s && userSelectionEvent.toLowerCase() === "p"){
+				compScore.innerHTML = compTally+= 1;
+			}else if (userSelectionEvent.toLowerCase() === "r" || userSelectionEvent.toLowerCase() === "s" || userSelectionEvent.toLowerCase() === "p"){
+				alert("Tie! Try again.")
+			}else{
+				alert("Please restrict your choice to R, S, or P")
+			}
+		}
+
+		// generate random integer between 1 and three
+		var random = function(){
+			return Math.floor((Math.random()*3)+1);
+		}
+
+		var userSelection = function(key){
+			if (key = key.toUpperCase()){
+				return key.toLowerCase();
+			}else{
+				return key;
+			}
+		}
+
+	</script>
+
